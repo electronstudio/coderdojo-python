@@ -1,6 +1,3 @@
-WIDTH = 500
-HEIGHT = 500
-
 alien = Actor('alien')
 alien.pos = (0,50)
 
@@ -19,3 +16,4 @@ def update():
 # use the += operator to change the alien.x more concisely
 # use the 'or' operator to allow WASD keys to move the alien
 #   in addition to the cursor keys
+# make alien wrap around when he moves off edge of screen

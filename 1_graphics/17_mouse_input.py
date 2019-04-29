@@ -1,7 +1,6 @@
-# Same as program 15 but
-# # box has been removed
-# # mouse function added
-# # score text displayed
+# changes: box has been removed
+# mouse function for clicking on alien
+# score display
 
 WIDTH = 500
 HEIGHT = 500

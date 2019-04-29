@@ -1,13 +1,10 @@
-# Some game controllers may have different inputs and some may not be compatible so don't be
-# surprised if this doesnt quite work properly!  Use joystick_tester.py program to test yours.
+# Some game controllers have different inputs and some are not be compatible so don't be
+# surprised if this doesnt quite work properly!  Use joystick_tester.py to test yours.
 
 import pygame
 
 joystick = pygame.joystick.Joystick(0)
 joystick.init()
-
-WIDTH = 500
-HEIGHT = 500
 
 alien = Actor("alien")
 alien.pos = (0, 50)

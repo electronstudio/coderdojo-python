@@ -12,3 +12,6 @@ def draw():
     screen.draw.line((150, 20), (350, 20), "purple")
 
 # TODO: draw a picture
+# Make sure you understand (x,y) co-ordinates
+# In maths this called a 'Cartesian coordinate system'
+# and everything we do in Pygame Zero will use it
