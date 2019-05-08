@@ -1,6 +1,5 @@
 alien = Actor('alien')
 alien.pos = (0,50)
-alien._orig_surf.width=300
 
 def draw():
     screen.clear()
