@@ -1,3 +1,7 @@
+# Create an empty array, use a loop to fill it with aliens
+# Draw the aliens, move the aliens
+# Add a new alien when the mouse is clicked
+
 WIDTH = 500
 
 aliens = []
@@ -19,6 +23,6 @@ def on_mouse_down(pos, button):
     aliens.append(Actor('alien', pos))
 
 #TODO:
-# Go back to your previous game (program 15)
+# Go back to your previous game (e.g. program 16)
 # make an array of bullets that shoot when you
 # press the space bar

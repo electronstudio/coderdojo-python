@@ -1,7 +1,6 @@
 # Most of this code is copied from programs 11 and 13
 
 WIDTH = 500
-HEIGHT = 500
 
 alien = Actor("alien")
 alien.pos = (0, 50)

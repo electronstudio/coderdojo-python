@@ -1,3 +1,5 @@
+# wiggle your mouse around the screen!
+
 alien = Actor("alien")
 
 def draw():

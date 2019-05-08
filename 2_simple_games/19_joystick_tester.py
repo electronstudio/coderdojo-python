@@ -1,3 +1,6 @@
+# Example of controller input and example of for loops but
+# mostly here so I can test your controllers.
+# YOU DONT NEED TO TYPE THIS ONE (unless you really want to)
 import pygame
 
 def update():
@@ -13,9 +16,7 @@ def update():
         hats = joystick.get_numhats()
         screen.draw.text(
             "Joystick {} name: {} axes:{} buttons:{} hats:{}".format(
-                i, name, axes, buttons, hats
-            ),
-            (0, y))
+                i, name, axes, buttons, hats), (0, y))
         y += 14
         for i in range(axes):
             axis = joystick.get_axis(i)

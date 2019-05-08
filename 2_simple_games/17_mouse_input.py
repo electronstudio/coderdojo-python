@@ -1,9 +1,7 @@
-# changes: box has been removed
-# mouse function for clicking on alien
-# score display
-
-WIDTH = 500
-HEIGHT = 500
+# similiar to program 16 but
+#   * box has been removed
+#   * mouse function for clicking on alien
+#   * score display
 
 alien = Actor("alien")
 alien.pos = (0, 50)
