@@ -17,3 +17,18 @@
 Future stuff:
 newtonion physics - platform game?
 functions
+text in games
+
+# Lesson plan week 3
+* Demo student's games (j&o) (and animations d)
+* Ask what students are interested in:
+  * Minecraft?
+  * Visual novels?
+* Show 0A_shortcuts.py
+* Show 0B_for_loop.py
+* Show 20_loops.py
+* Show 25_colours.py
+* Show 0C_arrays  (if still interested)
+* Show 21_arrays.py (if still interested)
+* Show
+* If doing sprites, try MS Paint.  Students start by entering 20_loops.py.

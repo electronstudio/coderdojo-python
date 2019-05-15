@@ -1,0 +1,2302 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 24 24 571 818
+%%Title: Enscript Output
+%%For: Rich
+%%Creator: GNU Enscript 1.6.6
+%%CreationDate: Wed May  8 15:54:50 2019
+%%Orientation: Landscape
+%%Pages: (atend)
+%%DocumentMedia: A4 595 842 0 () ()
+%%DocumentNeededResources: (atend)
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Enscript-Prolog 1.6 6
+%
+% Procedures.
+%
+
+/_S {	% save current state
+  /_s save def
+} def
+/_R {	% restore from saved state
+  _s restore
+} def
+
+/S {	% showpage protecting gstate
+  gsave
+  showpage
+  grestore
+} bind def
+
+/MF {	% fontname newfontname -> -	make a new encoded font
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  % insert only valid encoding vectors
+  encoding_vector length 256 eq {
+    newfont /Encoding encoding_vector put
+  } if
+
+  newfontname newfont definefont pop
+} def
+
+/MF_PS { % fontname newfontname -> -	make a new font preserving its enc
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  newfontname newfont definefont pop
+} def
+
+/SF { % fontname width height -> -	set a new font
+  /height exch def
+  /width exch def
+
+  findfont
+  [width 0 0 height 0 0] makefont setfont
+} def
+
+/SUF { % fontname width height -> -	set a new user font
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF
+  /F-gs-user-font width height SF
+} def
+
+/SUF_PS { % fontname width height -> -	set a new user font preserving its enc
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF_PS
+  /F-gs-user-font width height SF
+} def
+
+/M {moveto} bind def
+/s {show} bind def
+
+/Box {	% x y w h -> -			define box path
+  /d_h exch def /d_w exch def /d_y exch def /d_x exch def
+  d_x d_y  moveto
+  d_w 0 rlineto
+  0 d_h rlineto
+  d_w neg 0 rlineto
+  closepath
+} def
+
+/bgs {	% x y height blskip gray str -> -	show string with bg color
+  /str exch def
+  /gray exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    gray setgray
+    fill
+  grestore
+  x y M str s
+} def
+
+/bgcs { % x y height blskip red green blue str -> -  show string with bg color
+  /str exch def
+  /blue exch def
+  /green exch def
+  /red exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    red green blue setrgbcolor
+    fill
+  grestore
+  x y M str s
+} def
+
+% Highlight bars.
+/highlight_bars {	% nlines lineheight output_y_margin gray -> -
+  gsave
+    setgray
+    /ymarg exch def
+    /lineheight exch def
+    /nlines exch def
+
+    % This 2 is just a magic number to sync highlight lines to text.
+    0 d_header_y ymarg sub 2 sub translate
+
+    /cw d_output_w cols div def
+    /nrows d_output_h ymarg 2 mul sub lineheight div cvi def
+
+    % for each column
+    0 1 cols 1 sub {
+      cw mul /xp exch def
+
+      % for each rows
+      0 1 nrows 1 sub {
+        /rn exch def
+        rn lineheight mul neg /yp exch def
+        rn nlines idiv 2 mod 0 eq {
+	  % Draw highlight bar.  4 is just a magic indentation.
+	  xp 4 add yp cw 8 sub lineheight neg Box fill
+	} if
+      } for
+    } for
+
+  grestore
+} def
+
+% Line highlight bar.
+/line_highlight {	% x y width height gray -> -
+  gsave
+    /gray exch def
+    Box gray setgray fill
+  grestore
+} def
+
+% Column separator lines.
+/column_lines {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h translate
+    /cw d_output_w cols div def
+    1 1 cols 1 sub {
+      cw mul 0 moveto
+      0 d_output_h rlineto stroke
+    } for
+  grestore
+} def
+
+% Column borders.
+/column_borders {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h moveto
+    0 d_output_h rlineto
+    d_output_w 0 rlineto
+    0 d_output_h neg rlineto
+    closepath stroke
+  grestore
+} def
+
+% Do the actual underlay drawing
+/draw_underlay {
+  ul_style 0 eq {
+    ul_str true charpath stroke
+  } {
+    ul_str show
+  } ifelse
+} def
+
+% Underlay
+/underlay {	% - -> -
+  gsave
+    0 d_page_h translate
+    d_page_h neg d_page_w atan rotate
+
+    ul_gray setgray
+    ul_font setfont
+    /dw d_page_h dup mul d_page_w dup mul add sqrt def
+    ul_str stringwidth pop dw exch sub 2 div ul_h_ptsize -2 div moveto
+    draw_underlay
+  grestore
+} def
+
+/user_underlay {	% - -> -
+  gsave
+    ul_x ul_y translate
+    ul_angle rotate
+    ul_gray setgray
+    ul_font setfont
+    0 0 ul_h_ptsize 2 div sub moveto
+    draw_underlay
+  grestore
+} def
+
+% Page prefeed
+/page_prefeed {		% bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} def
+
+% Wrapped line markers
+/wrapped_line_mark {	% x y charwith charheight type -> -
+  /type exch def
+  /h exch def
+  /w exch def
+  /y exch def
+  /x exch def
+
+  type 2 eq {
+    % Black boxes (like TeX does)
+    gsave
+      0 setlinewidth
+      x w 4 div add y M
+      0 h rlineto w 2 div 0 rlineto 0 h neg rlineto
+      closepath fill
+    grestore
+  } {
+    type 3 eq {
+      % Small arrows
+      gsave
+        .2 setlinewidth
+        x w 2 div add y h 2 div add M
+        w 4 div 0 rlineto
+        x w 4 div add y lineto stroke
+
+        x w 4 div add w 8 div add y h 4 div add M
+        x w 4 div add y lineto
+	w 4 div h 8 div rlineto stroke
+      grestore
+    } {
+      % do nothing
+    } ifelse
+  } ifelse
+} def
+
+% EPSF import.
+
+/BeginEPSF {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack
+  userdict begin
+  /showpage { } def
+  0 setgray 0 setlinecap
+  1 setlinewidth 0 setlinejoin
+  10 setmiterlimit [ ] 0 setdash newpath
+  /languagelevel where {
+    pop languagelevel
+    1 ne {
+      false setstrokeadjust false setoverprint
+    } if
+  } if
+} bind def
+
+/EndEPSF {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+%%EndResource
+%%BeginResource: procset Enscript-Encoding-88591 1.6 6
+/encoding_vector [
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclam       	/quotedbl     	/numbersign   	
+/dollar       	/percent      	/ampersand    	/quoteright   	
+/parenleft    	/parenright   	/asterisk     	/plus         	
+/comma        	/hyphen       	/period       	/slash        	
+/zero         	/one          	/two          	/three        	
+/four         	/five         	/six          	/seven        	
+/eight        	/nine         	/colon        	/semicolon    	
+/less         	/equal        	/greater      	/question     	
+/at           	/A            	/B            	/C            	
+/D            	/E            	/F            	/G            	
+/H            	/I            	/J            	/K            	
+/L            	/M            	/N            	/O            	
+/P            	/Q            	/R            	/S            	
+/T            	/U            	/V            	/W            	
+/X            	/Y            	/Z            	/bracketleft  	
+/backslash    	/bracketright 	/asciicircum  	/underscore   	
+/quoteleft    	/a            	/b            	/c            	
+/d            	/e            	/f            	/g            	
+/h            	/i            	/j            	/k            	
+/l            	/m            	/n            	/o            	
+/p            	/q            	/r            	/s            	
+/t            	/u            	/v            	/w            	
+/x            	/y            	/z            	/braceleft    	
+/bar          	/braceright   	/tilde        	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclamdown   	/cent         	/sterling     	
+/currency     	/yen          	/brokenbar    	/section      	
+/dieresis     	/copyright    	/ordfeminine  	/guillemotleft	
+/logicalnot   	/hyphen       	/registered   	/macron       	
+/degree       	/plusminus    	/twosuperior  	/threesuperior	
+/acute        	/mu           	/paragraph    	/bullet       	
+/cedilla      	/onesuperior  	/ordmasculine 	/guillemotright	
+/onequarter   	/onehalf      	/threequarters	/questiondown 	
+/Agrave       	/Aacute       	/Acircumflex  	/Atilde       	
+/Adieresis    	/Aring        	/AE           	/Ccedilla     	
+/Egrave       	/Eacute       	/Ecircumflex  	/Edieresis    	
+/Igrave       	/Iacute       	/Icircumflex  	/Idieresis    	
+/Eth          	/Ntilde       	/Ograve       	/Oacute       	
+/Ocircumflex  	/Otilde       	/Odieresis    	/multiply     	
+/Oslash       	/Ugrave       	/Uacute       	/Ucircumflex  	
+/Udieresis    	/Yacute       	/Thorn        	/germandbls   	
+/agrave       	/aacute       	/acircumflex  	/atilde       	
+/adieresis    	/aring        	/ae           	/ccedilla     	
+/egrave       	/eacute       	/ecircumflex  	/edieresis    	
+/igrave       	/iacute       	/icircumflex  	/idieresis    	
+/eth          	/ntilde       	/ograve       	/oacute       	
+/ocircumflex  	/otilde       	/odieresis    	/divide       	
+/oslash       	/ugrave       	/uacute       	/ucircumflex  	
+/udieresis    	/yacute       	/thorn        	/ydieresis    	
+] def
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Courier
+/HFpt_w 20 def
+/HFpt_h 20 def
+/Courier-Bold /HF-gs-font MF
+/HF /HF-gs-font findfont [HFpt_w 0 0 HFpt_h 0 0] makefont def
+/Courier /F-gs-font MF
+/F-gs-font 13 13 SF
+/#copies 1 def
+% Pagedevice definitions:
+gs_languagelevel 1 gt {
+  <<
+    /PageSize [595 842] 
+  >> setpagedevice
+} if
+%%BeginResource: procset Enscript-Header-simple 1.6 6
+
+/do_header {	% print default simple header
+  gsave
+    d_header_x d_header_y HFpt_h 3 div add translate
+
+    HF setfont
+    user_header_p {
+      5 0 moveto user_header_left_str show
+
+      d_header_w user_header_center_str stringwidth pop sub 2 div
+      0 moveto user_header_center_str show
+
+      d_header_w user_header_right_str stringwidth pop sub 5 sub
+      0 moveto user_header_right_str show
+    } {
+      5 0 moveto fname show
+      45 0 rmoveto fmodstr show
+      45 0 rmoveto pagenumstr show
+    } ifelse
+
+  grestore
+} def
+%%EndResource
+/d_page_w 794 def
+/d_page_h 547 def
+/d_header_x 0 def
+/d_header_y 517 def
+/d_header_w 794 def
+/d_header_h 30 def
+/d_footer_x 0 def
+/d_footer_y 0 def
+/d_footer_w 794 def
+/d_footer_h 0 def
+/d_output_w 794 def
+/d_output_h 517 def
+/cols 1 def
+%%EndSetup
+%%Page: (1-2) 1
+%%BeginPageSetup
+_S
+90 rotate
+24 -571 translate
+%Page: (1) 1
+%BeginPageSetup
+_S
+% N-up sub-page 1/2
+0 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (15_collisions.py) def
+/fdir (.) def
+/ftail (15_collisions.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:38:00 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (15_collisions.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Most of this code is copied from programs 11 and 13) s
+/F-gs-font 13 13 SF
+0 setgray
+5 473 M
+(WIDTH = 500) s
+5 445 M
+(alien = Actor\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+114.2 445 M
+("alien") s
+/F-gs-font 13 13 SF
+0 setgray
+168.8 445 M
+(\)) s
+5 431 M
+(alien.pos = \(0, 50\)) s
+5 417 M
+(box = Rect\(\(20, 20\), \(100, 100\)\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 389 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 389 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 389 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 389 M
+(\(\):) s
+5 375 M
+(    screen.clear\(\)) s
+5 361 M
+(    screen.draw.filled_rect\(box, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+262.4 361 M
+("red") s
+/F-gs-font 13 13 SF
+0 setgray
+301.4 361 M
+(\)) s
+5 347 M
+(    alien.draw\(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 319 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 319 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 319 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 319 M
+(\(\):) s
+5 305 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 305 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 305 M
+( keyboard.right:) s
+5 291 M
+(        alien.x = alien.x + 2) s
+5 277 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 277 M
+(elif) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 277 M
+( keyboard.left:) s
+5 263 M
+(        alien.x = alien.x - 2) s
+5 249 M
+(    box.x = box.x + 2) s
+5 235 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 235 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 235 M
+( box.x > WIDTH:) s
+5 221 M
+(        box.x = 0) s
+5 207 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 207 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 207 M
+( alien.colliderect\(box\):) s
+5 193 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 193 M
+(print) s
+/F-gs-font 13 13 SF
+0 setgray
+106.4 193 M
+(\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+114.2 193 M
+("hit") s
+/F-gs-font 13 13 SF
+0 setgray
+153.2 193 M
+(\)) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 151 M
+(# TODO) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 137 M
+(# joystick input \(again\), vertical movement \(again\)) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 123 M
+(# make the box chase the alien) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 109 M
+(# print number of times hit \(the score\)) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+%Page: (1) 2
+%BeginPageSetup
+_S
+% N-up sub-page 2/2
+402 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (16_collisions2_sound_animation.py) def
+/fdir (.) def
+/ftail (16_collisions2_sound_animation.py) def
+% User defined strings:
+/fmodstr (Mon Apr 29 18:11:08 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (16_collisions2_sound_animation.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Most of this code is copied from program 15) s
+/F-gs-font 13 13 SF
+0 setgray
+5 487 M
+(WIDTH = 500) s
+5 473 M
+(alien = Actor\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+114.2 473 M
+("alien") s
+/F-gs-font 13 13 SF
+0 setgray
+168.8 473 M
+(\)) s
+5 459 M
+(alien.pos = \(0, 50\)) s
+5 445 M
+(box = Rect\(\(20, 20\), \(100, 100\)\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 417 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 417 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 417 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 417 M
+(\(\):) s
+5 403 M
+(    screen.clear\(\)) s
+5 389 M
+(    screen.draw.filled_rect\(box, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+262.4 389 M
+("red") s
+/F-gs-font 13 13 SF
+0 setgray
+301.4 389 M
+(\)) s
+5 375 M
+(    alien.draw\(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 361 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 361 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 361 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 361 M
+(\(\):) s
+5 347 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 347 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 347 M
+( keyboard.right:) s
+5 333 M
+(        alien.x = alien.x + 2) s
+5 319 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 319 M
+(elif) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 319 M
+( keyboard.left:) s
+5 305 M
+(        alien.x = alien.x - 2) s
+5 291 M
+(    box.x = box.x + 2) s
+5 277 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 277 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 277 M
+( box.x > WIDTH:) s
+5 263 M
+(        box.x = 0) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 249 M
+(# PLAY SOUND AND SHOW IMAGE WHEN HIT) s
+/F-gs-font 13 13 SF
+0 setgray
+5 235 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 235 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 235 M
+( alien.colliderect\(box\):) s
+5 221 M
+(        alien.image = ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+176.6 221 M
+('alien_hurt') s
+/F-gs-font 13 13 SF
+0 setgray
+5 207 M
+(        sounds.eep.play\(\)) s
+5 193 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 193 M
+(else) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 193 M
+(:) s
+5 179 M
+(        alien.image = ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+176.6 179 M
+('alien') s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 165 M
+(# TODO) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 151 M
+(# Record your own sound effect) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 137 M
+(# Add more boxes or sprites that move in different ways to avoid) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 123 M
+(# Add a second alien controlled by different keys or gamepad) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+_R
+S
+%%Page: (1-2) 2
+%%BeginPageSetup
+_S
+90 rotate
+24 -571 translate
+%Page: (1) 3
+%BeginPageSetup
+_S
+% N-up sub-page 1/2
+0 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (17_mouse_input.py) def
+/fdir (.) def
+/ftail (17_mouse_input.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:39:15 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (17_mouse_input.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# similiar to program 16 but) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 487 M
+(#   * box has been removed) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 473 M
+(#   * mouse function for clicking on alien) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 459 M
+(#   * score display) s
+/F-gs-font 13 13 SF
+0 setgray
+5 431 M
+(alien = Actor\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+114.2 431 M
+("alien") s
+/F-gs-font 13 13 SF
+0 setgray
+168.8 431 M
+(\)) s
+5 417 M
+(alien.pos = \(0, 50\)) s
+5 403 M
+(score = 0) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 375 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 375 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 375 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 375 M
+(\(\):) s
+5 361 M
+(    screen.clear\(\)) s
+5 347 M
+(    alien.draw\(\)) s
+5 333 M
+(    screen.draw.text\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+168.8 333 M
+("Score ") s
+/F-gs-font 13 13 SF
+0 setgray
+231.2 333 M
+(+str\(score\), \(0,0\)\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 305 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 305 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 305 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 305 M
+(\(\):) s
+5 291 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 291 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 291 M
+( keyboard.right:) s
+5 277 M
+(        alien.x = alien.x + 2) s
+5 263 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 263 M
+(elif) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 263 M
+( keyboard.left:) s
+5 249 M
+(        alien.x = alien.x - 2) s
+5 235 M
+(    alien.image = ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+145.4 235 M
+('alien') s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 207 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 207 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 207 M
+(on_mouse_down) s
+/F-gs-font 13 13 SF
+0 setgray
+137.6 207 M
+(\(pos, button\):) s
+5 193 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 193 M
+(global) s
+/F-gs-font 13 13 SF
+0 setgray
+83 193 M
+( score) s
+5 179 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 179 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 179 M
+( button == mouse.LEFT ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+223.4 179 M
+(and) s
+/F-gs-font 13 13 SF
+0 setgray
+246.8 179 M
+( alien.collidepoint\(pos\):) s
+5 165 M
+(        alien.image = ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+176.6 165 M
+('alien_hurt') s
+/F-gs-font 13 13 SF
+0 setgray
+5 151 M
+(        sounds.eep.play\(\)) s
+5 137 M
+(        score = score + 1) s
+_R
+%Page: (1) 4
+%BeginPageSetup
+_S
+% N-up sub-page 2/2
+402 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (18_mouse_movement.py) def
+/fdir (.) def
+/ftail (18_mouse_movement.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:45:51 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (18_mouse_movement.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# wiggle your mouse around the screen!) s
+/F-gs-font 13 13 SF
+0 setgray
+5 473 M
+(alien = Actor\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+114.2 473 M
+("alien") s
+/F-gs-font 13 13 SF
+0 setgray
+168.8 473 M
+(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 445 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 445 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 445 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 445 M
+(\(\):) s
+5 431 M
+(    screen.clear\(\)) s
+5 417 M
+(    alien.draw\(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 389 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 389 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 389 M
+(on_mouse_move) s
+/F-gs-font 13 13 SF
+0 setgray
+137.6 389 M
+(\(pos\):) s
+5 375 M
+(    alien.pos = pos) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 347 M
+(#TODO:) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 333 M
+(# what happens if you delete line 8 and replace it with this:) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 319 M
+(#) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 305 M
+(#   animate\(alien, pos=pos, duration=1, tween='bounce_end'\)) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 291 M
+(#) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 277 M
+(# what happens if you change on_mouse_move to on_mouse_down?) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 263 M
+(# can you make a game with one alien controlled by mouse) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 249 M
+(#    and another controlled by keyboard?) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+_R
+S
+%%Page: (1-2) 3
+%%BeginPageSetup
+_S
+90 rotate
+24 -571 translate
+%Page: (1) 5
+%BeginPageSetup
+_S
+% N-up sub-page 1/2
+0 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (19_joystick_tester.py) def
+/fdir (.) def
+/ftail (19_joystick_tester.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:47:17 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (19_joystick_tester.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Example of controller input and example of for loops but) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 487 M
+(# mostly here so I can test your controllers.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 473 M
+(# YOU DONT NEED TO TYPE THIS ONE \(unless you really want to\)) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 459 M
+(import) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 459 M
+( pygame) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 431 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 431 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 431 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 431 M
+(\(\):) s
+5 417 M
+(    screen.clear\(\)) s
+5 403 M
+(    joystick_count = pygame.joystick.get_count\(\)) s
+5 389 M
+(    y = 0) s
+5 375 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 375 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+59.6 375 M
+( i ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+83 375 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+98.6 375 M
+( range\(joystick_count\):) s
+5 361 M
+(        joystick = pygame.joystick.Joystick\(i\)) s
+5 347 M
+(        joystick.init\(\)) s
+5 333 M
+(        name = joystick.get_name\(\)) s
+5 319 M
+(        axes = joystick.get_numaxes\(\)) s
+5 305 M
+(        buttons = joystick.get_numbuttons\(\)) s
+5 291 M
+(        hats = joystick.get_numhats\(\)) s
+5 277 M
+(        screen.draw.text\() s
+5 263 M
+(            ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+98.6 263 M
+("Joystick {} name: {} axes:{} buttons:{} hats:{}") s
+/F-gs-font 13 13 SF
+0 setgray
+480.8 263 M
+(.format\() s
+5 249 M
+(                i, name, axes, buttons, hats\), \(0, y\)\)) s
+5 235 M
+(        y += 14) s
+5 221 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 221 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+90.8 221 M
+( i ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+114.2 221 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 221 M
+( range\(axes\):) s
+5 207 M
+(            axis = joystick.get_axis\(i\)) s
+5 193 M
+(            screen.draw.text\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+231.2 193 M
+("Axis {} value: {:>6.3f}") s
+/F-gs-font 13 13 SF
+0 setgray
+426.2 193 M
+(.format\(i, axis\), \(20, y\)\)) s
+5 179 M
+(            y += 14) s
+5 165 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 165 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+90.8 165 M
+( i ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+114.2 165 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 165 M
+( range\(buttons\):) s
+5 151 M
+(            button = joystick.get_button\(i\)) s
+5 137 M
+(            screen.draw.text\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+231.2 137 M
+("Button {:>2} value: {}") s
+/F-gs-font 13 13 SF
+0 setgray
+418.4 137 M
+(.format\(i, button\), \(20, y\)\)) s
+5 123 M
+(            y += 14) s
+5 109 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 109 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+90.8 109 M
+( i ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+114.2 109 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 109 M
+( range\(hats\):) s
+5 95 M
+(            hat = joystick.get_hat\(i\)) s
+5 81 M
+(            screen.draw.text\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+231.2 81 M
+("Hat {} value: {}") s
+/F-gs-font 13 13 SF
+0 setgray
+371.6 81 M
+(.format\(i, str\(hat\)\), \(20, y\)\)) s
+5 67 M
+(            y += 14) s
+_R
+%Page: (1) 6
+%BeginPageSetup
+_S
+% N-up sub-page 2/2
+402 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (20_loops.py) def
+/fdir (.) def
+/ftail (20_loops.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:50:15 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (20_loops.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# draw red cirlces using a loop) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 487 M
+(# draw green circles using a loop within another loop) s
+/F-gs-font 13 13 SF
+0 setgray
+5 459 M
+(WIDTH = 500) s
+5 445 M
+(HEIGHT = 500) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 417 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 417 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 417 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 417 M
+(\(\):) s
+5 403 M
+(    screen.clear\(\)) s
+5 389 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 389 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+59.6 389 M
+( x ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+83 389 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+98.6 389 M
+( range\(0, WIDTH, 40\):) s
+5 375 M
+(        screen.draw.filled_circle\(\(x, 20\), 20, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+371.6 375 M
+("red") s
+/F-gs-font 13 13 SF
+0 setgray
+410.6 375 M
+(\)) s
+5 347 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 347 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+59.6 347 M
+( x ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+83 347 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+98.6 347 M
+( range\(0, WIDTH, 40\):) s
+5 333 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 333 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+90.8 333 M
+( y ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+114.2 333 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 333 M
+( range\(60, HEIGHT, 40\):) s
+5 319 M
+(            screen.draw.filled_circle\(\(x, y\), 10, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+395 319 M
+("green") s
+/F-gs-font 13 13 SF
+0 setgray
+449.6 319 M
+(\)) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 291 M
+(#TODO:) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 277 M
+(# import random and make the positions random, e.g.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 263 M
+(#     random.randint\(0, 100\)) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 249 M
+(# learn about RGB colour and make random colours \(difficult\)) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 235 M
+(# create a timer variable and change colours based on time \(difficult\)) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+_R
+S
+%%Page: (1-2) 4
+%%BeginPageSetup
+_S
+90 rotate
+24 -571 translate
+%Page: (1) 7
+%BeginPageSetup
+_S
+% N-up sub-page 1/2
+0 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (21_arrays.py) def
+/fdir (.) def
+/ftail (21_arrays.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:52:13 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (21_arrays.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Create an empty array, use a loop to fill it with aliens) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 487 M
+(# Draw the aliens, move the aliens) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 473 M
+(# Add a new alien when the mouse is clicked) s
+/F-gs-font 13 13 SF
+0 setgray
+5 445 M
+(WIDTH = 500) s
+5 417 M
+(aliens = []) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 403 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 403 M
+( i ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+51.8 403 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 403 M
+( range\(0,10\):) s
+5 389 M
+(    aliens.append\(Actor\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+192.2 389 M
+('alien') s
+/F-gs-font 13 13 SF
+0 setgray
+246.8 389 M
+(, \(i*30, i*30\)\)\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 361 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 361 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 361 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 361 M
+(\(\):) s
+5 347 M
+(    screen.clear\(\)) s
+5 333 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 333 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+59.6 333 M
+( alien ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+114.2 333 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 333 M
+( aliens:) s
+5 319 M
+(        alien.draw\(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 291 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 291 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 291 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 291 M
+(\(\):) s
+5 277 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 277 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+59.6 277 M
+( alien ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+114.2 277 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 277 M
+( aliens:) s
+5 263 M
+(        alien.x += 2) s
+5 249 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 249 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+83 249 M
+( alien.x > WIDTH:) s
+5 235 M
+(            alien.x = 0) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 207 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 207 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 207 M
+(on_mouse_down) s
+/F-gs-font 13 13 SF
+0 setgray
+137.6 207 M
+(\(pos, button\):) s
+5 193 M
+(    aliens.append\(Actor\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+192.2 193 M
+('alien') s
+/F-gs-font 13 13 SF
+0 setgray
+246.8 193 M
+(, pos\)\)) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 165 M
+(#TODO:) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 151 M
+(# Go back to your previous game \(e.g. program 16\)) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 137 M
+(# make an array of bullets that shoot when you) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 123 M
+(# press the space bar) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+%Page: (1) 8
+%BeginPageSetup
+_S
+% N-up sub-page 2/2
+402 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (22_animation.py) def
+/fdir (.) def
+/ftail (22_animation.py) def
+% User defined strings:
+/fmodstr (Tue May 07 23:44:03 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (22_animation.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Most of this code is copied from program 15) s
+/F-gs-font 13 13 SF
+0 setgray
+5 473 M
+(alien = Actor\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+114.2 473 M
+("alien") s
+/F-gs-font 13 13 SF
+0 setgray
+168.8 473 M
+(\)) s
+5 459 M
+(alien.pos = \(200, 200\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 431 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 431 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 431 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 431 M
+(\(\):) s
+5 417 M
+(    screen.clear\(\)) s
+5 403 M
+(    alien.draw\(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 375 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 375 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 375 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 375 M
+(\(\):) s
+5 361 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 361 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 361 M
+( keyboard.right:) s
+5 347 M
+(        alien.x = alien.x + 2) s
+5 333 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 333 M
+(elif) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 333 M
+( keyboard.left:) s
+5 319 M
+(        alien.x = alien.x - 2) s
+5 291 M
+(images = [) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+83 291 M
+("alien_hurt") s
+/F-gs-font 13 13 SF
+0 setgray
+176.6 291 M
+(, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+192.2 291 M
+("alien") s
+/F-gs-font 13 13 SF
+0 setgray
+246.8 291 M
+(]) s
+5 277 M
+(image_counter = 0) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 249 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 249 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 249 M
+(animateAlien) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 249 M
+(\(\):) s
+5 235 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 235 M
+(global) s
+/F-gs-font 13 13 SF
+0 setgray
+83 235 M
+( image_counter) s
+5 221 M
+(    alien.image = images[image_counter % len\(images\)]) s
+5 207 M
+(    image_counter += 1) s
+5 179 M
+(clock.schedule_interval\(animateAlien, 0.2\)) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 151 M
+(# TODO) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 137 M
+(# make the alien animate faster) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 123 M
+(# add another image to list of images) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 109 M
+(# draw your own animation, e.g. a man walking left) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 95 M
+(#   and make it play when the left key is pressed) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+_R
+S
+%%Page: (1-2) 5
+%%BeginPageSetup
+_S
+90 rotate
+24 -571 translate
+%Page: (1) 9
+%BeginPageSetup
+_S
+% N-up sub-page 1/2
+0 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (23_simple_physics.py) def
+/fdir (.) def
+/ftail (23_simple_physics.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:54:28 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (23_simple_physics.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Make a ball that bounces using simple velocity vector \(vx and vy\)) s
+/F-gs-font 13 13 SF
+0 setgray
+5 473 M
+(WIDTH = 500) s
+5 459 M
+(HEIGHT = 500) s
+5 431 M
+(ball = Rect\(\(200, 400\), \(20, 20\)\)) s
+5 417 M
+(vx = 1) s
+5 403 M
+(vy = 1) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 375 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 375 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 375 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 375 M
+(\(\):) s
+5 361 M
+(    screen.clear\(\)) s
+5 347 M
+(    screen.draw.filled_rect\(ball, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+270.2 347 M
+("red") s
+/F-gs-font 13 13 SF
+0 setgray
+309.2 347 M
+(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 319 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 319 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 319 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 319 M
+(\(\):) s
+5 305 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 305 M
+(global) s
+/F-gs-font 13 13 SF
+0 setgray
+83 305 M
+( vx, vy) s
+5 291 M
+(    ball.x += vx) s
+5 277 M
+(    ball.y += vy) s
+5 263 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 263 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 263 M
+( ball.right > WIDTH ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+207.8 263 M
+(or) s
+/F-gs-font 13 13 SF
+0 setgray
+223.4 263 M
+( ball.left < 0:) s
+5 249 M
+(        vx = -vx) s
+5 235 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 235 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 235 M
+( ball.bottom > HEIGHT ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+223.4 235 M
+(or) s
+/F-gs-font 13 13 SF
+0 setgray
+239 235 M
+( ball.top < 0:) s
+5 221 M
+(        vy = -vy) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 193 M
+(#TODO) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 179 M
+(# Make the ball get faster each time it hits the sides) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+%Page: (1) 10
+%BeginPageSetup
+_S
+% N-up sub-page 2/2
+402 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (24_pong.py) def
+/fdir (.) def
+/ftail (24_pong.py) def
+% User defined strings:
+/fmodstr (Wed May 08 15:54:46 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (24_pong.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Classic bat and ball game) s
+/F-gs-font 13 13 SF
+0 setgray
+5 473 M
+(WIDTH = 500) s
+5 459 M
+(HEIGHT = 500) s
+5 431 M
+(ball = Rect\(\(150, 400\), \(20, 20\)\)) s
+5 417 M
+(bat = Rect\(\(200, 480\), \(60, 20\)\)) s
+5 403 M
+(vx = 4) s
+5 389 M
+(vy = 4) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 361 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 361 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 361 M
+(draw) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 361 M
+(\(\):) s
+5 347 M
+(    screen.clear\(\)) s
+5 333 M
+(    screen.draw.filled_rect\(ball, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+270.2 333 M
+("red") s
+/F-gs-font 13 13 SF
+0 setgray
+309.2 333 M
+(\)) s
+5 319 M
+(    screen.draw.filled_rect\(bat, ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+262.4 319 M
+("white") s
+/F-gs-font 13 13 SF
+0 setgray
+317 319 M
+(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 291 M
+(def) s
+/F-gs-font 13 13 SF
+0 setgray
+28.4 291 M
+( ) s
+/Courier-Bold 13 13 SUF
+0 0 1 setrgbcolor
+36.2 291 M
+(update) s
+/F-gs-font 13 13 SF
+0 setgray
+83 291 M
+(\(\):) s
+5 277 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 277 M
+(global) s
+/F-gs-font 13 13 SF
+0 setgray
+83 277 M
+( vx, vy) s
+5 263 M
+(    ball.x += vx) s
+5 249 M
+(    ball.y += vy) s
+5 235 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 235 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 235 M
+( ball.right > WIDTH ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+207.8 235 M
+(or) s
+/F-gs-font 13 13 SF
+0 setgray
+223.4 235 M
+( ball.left < 0:) s
+5 221 M
+(        vx = -vx) s
+5 207 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 207 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 207 M
+( ball.colliderect\(bat\) ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+231.2 207 M
+(or) s
+/F-gs-font 13 13 SF
+0 setgray
+246.8 207 M
+( ball.top < 0:) s
+5 193 M
+(        vy = -vy) s
+5 179 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 179 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 179 M
+( ball.bottom > HEIGHT:) s
+5 165 M
+(        exit\(\)) s
+5 151 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 151 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 151 M
+(\(keyboard.right\):) s
+5 137 M
+(        bat.x += 2) s
+5 123 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 123 M
+(elif) s
+/F-gs-font 13 13 SF
+0 setgray
+67.4 123 M
+(\(keyboard.left\):) s
+5 109 M
+(        bat.x -= 2) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 81 M
+(#TODO) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 67 M
+(# Add another bat at the top of the screen for player 2) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 53 M
+(# Add bricks \(Rects\) that disappear when the ball hits them) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+_R
+S
+%%Trailer
+%%Pages: 10
+%%DocumentNeededResources: font Courier-Oblique Courier-Bold Courier 
+%%EOF
