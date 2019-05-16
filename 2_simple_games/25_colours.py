@@ -16,7 +16,8 @@ def update():
     global red_amount
     red_amount += 1
     red_amount = red_amount % 255
-    c = (red_amount, 0, 0)
+
+
 
 # TODO
 # Change the green and blue amounts to make different colours

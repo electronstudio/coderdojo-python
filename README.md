@@ -30,5 +30,5 @@ text in games
 * Show 25_colours.py
 * Show 0C_arrays  (if still interested)
 * Show 21_arrays.py (if still interested)
-* Show
+* Show 0d_functions (if still interested)
 * If doing sprites, try MS Paint.  Students start by entering 20_loops.py.
