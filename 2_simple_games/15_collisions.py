@@ -1,5 +1,6 @@
-# Most of this code is copied from programs 11 and 13
-
+"""
+    Most of this code is copied from programs 11 and 13
+"""
 WIDTH = 500
 
 alien = Actor("alien")
@@ -23,7 +24,8 @@ def update():
         print("hit")
 
 
-# TODO
-# joystick input (again), vertical movement (again)
-# make the box chase the alien
-# print number of times hit (the score)
+""" TODO
+    joystick input (again), vertical movement (again)
+    make the box chase the alien
+    print number of times hit (the score)
+"""

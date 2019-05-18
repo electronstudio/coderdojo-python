@@ -1,6 +1,7 @@
-# Class can contain functions (called methods) as well as variables
-# Methods are the best place to modify the class's variables
-
+"""
+Class can contain functions (called methods) as well as variables
+Methods are the best place to modify the class's variables
+"""
 WIDTH = 500
 HEIGHT = 500
 

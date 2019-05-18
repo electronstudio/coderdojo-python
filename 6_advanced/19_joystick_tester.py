@@ -1,6 +1,7 @@
-# Example of controller input and example of for loops but
-# mostly here so I can test your controllers.
-# YOU DONT NEED TO TYPE THIS ONE (unless you really want to)
+""" Example of controller input and example of for loops but
+mostly here so I can test your controllers.
+YOU DONT NEED TO TYPE THIS ONE (unless you really want to)
+"""
 import pygame
 
 def update():

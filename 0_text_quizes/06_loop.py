@@ -11,6 +11,7 @@ while True:
         print("wrong")
 print("correct!")
 
-# TODO:
-# give a hint to the player when they are wrong
-# print how many guesses at the end
+""" TODO:
+    give a hint to the player when they are wrong
+    print how many guesses at the end
+"""

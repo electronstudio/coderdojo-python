@@ -9,10 +9,11 @@ if g == n + 7:
 else:
     print("wrong")
 
-# TODO:
-# add some more questions, e.g.
-#    instead of 7, use another random number
-#    use a bigger random number
-#    multiply or divide or subtract numbers
-# print how many questions the player
-# got correct at the end.
+""" TODO:
+    add some more questions, e.g.
+        instead of 7, use another random number
+        use a bigger random number
+        multiply or divide or subtract numbers
+    print how many questions the player
+    got correct at the end.
+"""

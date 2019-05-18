@@ -1,8 +1,9 @@
-# You've already been using class types, e.g. Rect and Actor
-# But these classes do not include vx and vy variables, so let's
-# create our own class, Sprite, that is the same as Actor but with
-# these variables included
-
+"""
+You've already been using class types, e.g. Rect and Actor
+But these classes do not include vx and vy variables, so let's
+create our own class, Sprite, that is the same as Actor but with
+these variables included
+"""
 WIDTH = 500
 HEIGHT = 500
 

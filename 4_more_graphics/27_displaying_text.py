@@ -1,5 +1,6 @@
-# Simple game that displays text on screen
-
+"""
+Simple game that displays text on screen
+"""
 WIDTH = 500
 HEIGHT = 500
 
@@ -17,7 +18,9 @@ def on_key_down(key):
     if key == keys.SPACE:
         score += 1
 
-# TODO
-# Make the score text larger
-# Add a second player who presses a different key and show their score too
-# Add text to one of your other games
+"""
+TODO
+Make the score text larger
+Add a second player who presses a different key and show their score too
+Add text to one of your other games
+"""

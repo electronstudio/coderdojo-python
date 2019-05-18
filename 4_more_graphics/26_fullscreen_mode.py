@@ -1,6 +1,6 @@
-# Add these lines to any game to enable fullscreen mode
-# Then press F to go fullscreen, ESCAPE to quit.
-
+"""Add these lines to any game to enable fullscreen mode
+Then press F to go fullscreen, ESCAPE to quit.
+"""
 import pygame
 
 WIDTH = 500

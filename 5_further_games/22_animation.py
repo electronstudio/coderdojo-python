@@ -23,8 +23,9 @@ def animateAlien():
 
 clock.schedule_interval(animateAlien, 0.2)
 
-# TODO
-# make the alien animate faster
-# add another image to list of images
-# draw your own animation, e.g. a man walking left
-#   and make it play when the left key is pressed
+""" TODO
+make the alien animate faster
+add another image to list of images
+draw your own animation, e.g. a man walking left
+and make it play when the left key is pressed
+"""

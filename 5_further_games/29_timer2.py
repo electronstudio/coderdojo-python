@@ -1,5 +1,7 @@
-# Pygame has its own clock which we can use by asking it to call one of our
-# functions at a certain time, or regularly over and over at an interval.
+"""
+Pygame has its own clock which we can use by asking it to call one of our
+functions at a certain time, or regularly over and over at an interval.
+"""
 
 import random
 
@@ -19,8 +21,9 @@ def draw():
     for alien in aliens:
         alien.draw()
 
-# TODO
-# Make the aliens appear much faster
-# Use len(aliens) to print how many aliens there are
-# When there are too many aliens, stop adding them using this code:
-#    clock.unschedule(add_alien)
+"""TODO
+Make the aliens appear much faster
+Use len(aliens) to print how many aliens there are
+When there are too many aliens, stop adding them using this code:
+    clock.unschedule(add_alien)
+"""

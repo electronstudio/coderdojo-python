@@ -1,5 +1,5 @@
-# Make a ball that bounces using simple velocity vector (vx and vy)
-
+"""Make a ball that bounces using simple velocity vector (vx and vy)
+"""
 WIDTH = 500
 HEIGHT = 500
 
@@ -20,5 +20,6 @@ def update():
     if ball.bottom > HEIGHT or ball.top < 0:
         vy = -vy
 
-#TODO
+"""TODO
 # Make the ball get faster each time it hits the sides
+"""

@@ -1,4 +1,4 @@
-# Most of this code is copied from program 15
+"""Most of this code is copied from program 15"""
 WIDTH = 500
 alien = Actor("alien")
 alien.pos = (0, 50)
@@ -22,8 +22,9 @@ def update():
         sounds.eep.play()
     else:
         alien.image = 'alien'
-# TODO
-# Record your own sound effect
-# Add more boxes or sprites that move in different ways to avoid
-# Add a second alien controlled by different keys or gamepad
+"""TODO
+    Record your own sound effect
+    Add more boxes or sprites that move in different ways to avoid
+    Add a second alien controlled by different keys or gamepad
+"""
 

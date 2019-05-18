@@ -1,5 +1,5 @@
-# Classic bat and ball game
-
+""" Classic bat and ball game
+"""
 WIDTH = 500
 HEIGHT = 500
 
@@ -29,6 +29,7 @@ def update():
         bat.x -= 2
 
 
-#TODO
-# Add another bat at the top of the screen for player 2
-# Add bricks (Rects) that disappear when the ball hits them
+"""TODO
+Add another bat at the top of the screen for player 2
+Add bricks (Rects) that disappear when the ball hits them
+"""
