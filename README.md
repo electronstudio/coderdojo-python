@@ -32,3 +32,11 @@ text in games
 * Show 21_arrays.py (if still interested)
 * Show 0d_functions (if still interested)
 * If doing sprites, try MS Paint.  Students start by entering 20_loops.py.
+
+# Lesson plan week 4
+* Show some broken code to debug
+
+x = 10
+ y = 11
+z = 12
+print(x,y,z)

@@ -4,9 +4,7 @@
 """
 WIDTH = 500
 
-box = Rect((20, 20), (2, 2))
-box.size = (50, 50)
-
+box = Rect((20, 20), (50, 50))
 
 def draw():
     screen.clear()
