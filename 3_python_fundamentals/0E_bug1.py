@@ -1,4 +1,4 @@
-# can you spot the bug?
+""" can you spot the bug? """
 
 x = 10
  y = 11

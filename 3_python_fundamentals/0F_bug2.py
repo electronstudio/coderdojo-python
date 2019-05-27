@@ -1,6 +1,6 @@
-# can you spot the 2 bugs?
+"""can you spot the 2 bugs?"""
 
-def myfunction():
+def myfunction:
     print "hello"
 
 myfunction()
