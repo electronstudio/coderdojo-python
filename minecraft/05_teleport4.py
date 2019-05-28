@@ -1,14 +1,14 @@
 """Do lots of teleports so it looks like a jump"""
 
-import mcpi.minecraft as minecraft
+from mcpi.minecraft import *
 import time
 
-mc = minecraft.Minecraft.create()
+mc = Minecraft.create()
 
 # CHANGE THESE NUMBERS TO THE CO-ORDS OF YOUR TELEPORTERS
 
-teleporter_x = 742
-teleporter_z = 955
+teleporter_x = 734
+teleporter_z = 956
 
 height = 20
 
@@ -20,7 +20,7 @@ while True:
     if pos.x == teleporter_x and pos.z == teleporter_z:
         mc.postToChat("teleport!")
         pos.x += 1  # move off the teleporter tile
-        for i in range(0,height):
+        for i in range(0, height):
             pos.y += 1  # move up a bit
             time.sleep(0.05)
             mc.player.setTilePos(pos)

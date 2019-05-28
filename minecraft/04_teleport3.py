@@ -1,9 +1,9 @@
 """Teleport player into the air"""
 
-import mcpi.minecraft as minecraft
+from mcpi.minecraft import *
 import time
 
-mc = minecraft.Minecraft.create()
+mc = Minecraft.create()
 
 # CHANGE THESE NUMBERS TO THE CO-ORDS OF YOUR TELEPORTERS
 
