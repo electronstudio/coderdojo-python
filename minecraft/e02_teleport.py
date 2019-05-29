@@ -1,7 +1,6 @@
-""" Change the player's position"""
+# Change the player's position
 
 from mcpi.minecraft import *
-import time
 
 mc = Minecraft.create()
 

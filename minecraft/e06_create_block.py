@@ -14,6 +14,7 @@ mc.setBlock(x, y, z, blocktype)
 # Make the block appear a short distance from the player
 #
 # Try these names instead of a number for blockType
+#
 # AIR, BED, BEDROCK, BEDROCK_INVISIBLE, BOOKSHELF, BRICK_BLOCK, CACTUS,
 # CHEST,CLAY, COAL_ORE, COBBLESTONE, COBWEB, CRAFTING_TABLE, DIAMOND_BLOCK,
 # DIAMOND_ORE, DIRT, DOOR_IRON, DOOR_WOOD, FARMLAND, FENCE, FENCE_GATE, FIRE,

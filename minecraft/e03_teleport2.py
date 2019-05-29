@@ -1,5 +1,7 @@
+# Before you run this, build two tiles in the game to be
+# your teleporters and write down the co-ordinates of them
+
 from mcpi.minecraft import *
-import time
 
 mc = Minecraft.create()
 
@@ -12,9 +14,6 @@ destination_x = 735
 destination_z = 956
 
 while True:
-    # Short delay to prevent chat filling up too quickly
-    time.sleep(0.2)
-
     # Get player position
     pos = mc.player.getTilePos()
     print(pos)
