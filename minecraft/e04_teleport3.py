@@ -1,4 +1,4 @@
-"""Teleport player into the air"""
+# Teleport player into the air
 
 from mcpi.minecraft import *
 import time

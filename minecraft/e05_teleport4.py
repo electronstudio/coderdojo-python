@@ -1,4 +1,4 @@
-"""Do lots of teleports so it looks like a jump"""
+# Do lots of teleports so it looks like a jump
 
 from mcpi.minecraft import *
 import time
