@@ -1,6 +1,7 @@
 """ Change the player's position"""
 
 from mcpi.minecraft import *
+import time
 
 mc = Minecraft.create()
 
@@ -12,6 +13,10 @@ z = 12
 mc.player.setTilePos(x, y, z)
 
 # TODO
-# Find the coordinates of a location in your world, ei.ther by pressing F3
+# Find the coordinates of a location in your world, either by pressing F3
 # in the game, or running the where_am_i.py program
 # enter them in this program and run it to teleport there
+#
+# Add
+#       time.sleep(5)
+# Then teleport the player somewhere else
