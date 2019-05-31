@@ -3,7 +3,7 @@
 %%Title: Enscript Output
 %%For: Rich
 %%Creator: GNU Enscript 1.6.6
-%%CreationDate: Wed May 29 03:08:46 2019
+%%CreationDate: Wed May 29 17:39:43 2019
 %%Orientation: Landscape
 %%Pages: (atend)
 %%DocumentMedia: A4 595 842 0 () ()
@@ -516,7 +516,7 @@ _S
 /fdir (.) def
 /ftail (e01_coordinates.py) def
 % User defined strings:
-/fmodstr (Wed May 29 00:05:02 2019) def
+/fmodstr (Wed May 29 16:28:40 2019) def
 /pagenumstr (1) def
 /user_header_p true def
 /user_header_left_str () def
@@ -525,61 +525,73 @@ _S
 /user_footer_p false def
 %%EndPageSetup
 do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Get the player's co-ordinates) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 487 M
+(# Print them to the chat) s
+/F-gs-font 13 13 SF
+0 setgray
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-5 501 M
+5 459 M
 (from) s
 /F-gs-font 13 13 SF
 0 setgray
-36.2 501 M
+36.2 459 M
 ( mcpi.minecraft ) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-161 501 M
+161 459 M
 (import) s
 /F-gs-font 13 13 SF
 0 setgray
-207.8 501 M
+207.8 459 M
 ( *) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-5 487 M
+5 445 M
 (import) s
 /F-gs-font 13 13 SF
 0 setgray
-51.8 487 M
+51.8 445 M
 ( time) s
-5 459 M
+5 417 M
 (mc = Minecraft.create\(\)) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-5 431 M
+5 389 M
 (while) s
 /F-gs-font 13 13 SF
 0 setgray
-44 431 M
+44 389 M
 ( True:     ) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-129.8 431 M
+129.8 389 M
 (# loop will make sure your game runs forever) s
 /F-gs-font 13 13 SF
 0 setgray
-5 417 M
+5 375 M
 (    time.sleep\(1\)) s
-5 403 M
+5 361 M
 (    pos = mc.player.getTilePos\(\)) s
-5 389 M
+5 347 M
 (    ) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-36.2 389 M
+36.2 347 M
 (print) s
 /F-gs-font 13 13 SF
 0 setgray
-75.2 389 M
+75.2 347 M
 (\(pos\)) s
-5 375 M
+5 333 M
 (    mc.postToChat\(pos\)) s
 _R
 _R
@@ -602,7 +614,7 @@ _S
 /fdir (.) def
 /ftail (e02_teleport.py) def
 % User defined strings:
-/fmodstr (Wed May 29 00:45:52 2019) def
+/fmodstr (Wed May 29 16:42:25 2019) def
 /pagenumstr (1) def
 /user_header_p true def
 /user_header_left_str () def
@@ -611,10 +623,10 @@ _S
 /user_footer_p false def
 %%EndPageSetup
 do_header
-/Courier-Bold 13 13 SUF
-0.737255 0.560784 0.560784 setrgbcolor
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
 5 501 M
-(""" Change the player's position""") s
+(# Change the player's position) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Bold 13 13 SUF
@@ -633,75 +645,67 @@ do_header
 0 setgray
 207.8 473 M
 ( *) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-5 459 M
-(import) s
-/F-gs-font 13 13 SF
-0 setgray
-51.8 459 M
-( time) s
-5 431 M
+5 445 M
 (mc = Minecraft.create\(\)) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 403 M
+5 417 M
 (# change these to where you want to go) s
 /F-gs-font 13 13 SF
 0 setgray
-5 389 M
+5 403 M
 (x = 10) s
-5 375 M
+5 389 M
 (y = 11) s
-5 361 M
+5 375 M
 (z = 12) s
-5 333 M
+5 347 M
 (mc.player.setTilePos\(x, y, z\)) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 305 M
+5 319 M
 (# TODO) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 291 M
+5 305 M
 (# Find the coordinates of a location in your world, either by pressing F3) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 277 M
-(# in the game, or running the where_am_i.py program) s
+5 291 M
+(# in the game, or running the e01_coordinates.py program) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 263 M
+5 277 M
 (# enter them in this program and run it to teleport there) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 249 M
+5 263 M
 (#) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 235 M
+5 249 M
 (# Add) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 221 M
+5 235 M
 (#       time.sleep\(5\)) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 207 M
+5 221 M
 (# Then teleport the player somewhere else) s
 /F-gs-font 13 13 SF
 0 setgray
@@ -719,7 +723,7 @@ _S
 /fdir (.) def
 /ftail (e03_teleport2.py) def
 % User defined strings:
-/fmodstr (Wed May 29 00:05:17 2019) def
+/fmodstr (Wed May 29 16:31:03 2019) def
 /pagenumstr (1) def
 /user_header_p true def
 /user_header_left_str () def
@@ -728,186 +732,34 @@ _S
 /user_footer_p false def
 %%EndPageSetup
 do_header
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
 5 501 M
-(from) s
+(# Before you run this, build two tiles in the game to be) s
 /F-gs-font 13 13 SF
 0 setgray
-36.2 501 M
-( mcpi.minecraft ) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-161 501 M
-(import) s
-/F-gs-font 13 13 SF
-0 setgray
-207.8 501 M
-( *) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
 5 487 M
-(import) s
+(# your teleporters and write down the co-ordinates of them) s
 /F-gs-font 13 13 SF
 0 setgray
-51.8 487 M
-( time) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
 5 459 M
-(mc = Minecraft.create\(\)) s
-/Courier-Oblique 13 13 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-5 431 M
-(# CHANGE THESE NUMBERS TO THE CO-ORDS OF YOUR TELEPORTERS) s
-/F-gs-font 13 13 SF
-0 setgray
-5 403 M
-(teleporter_x = 742) s
-5 389 M
-(teleporter_z = 955) s
-5 361 M
-(destination_x = 735) s
-5 347 M
-(destination_z = 956) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-5 319 M
-(while) s
-/F-gs-font 13 13 SF
-0 setgray
-44 319 M
-( True:) s
-5 305 M
-(    ) s
-/Courier-Oblique 13 13 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-36.2 305 M
-(# Short delay to prevent chat filling up too quickly) s
-/F-gs-font 13 13 SF
-0 setgray
-5 291 M
-(    time.sleep\(0.2\)) s
-5 263 M
-(    ) s
-/Courier-Oblique 13 13 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-36.2 263 M
-(# Get player position) s
-/F-gs-font 13 13 SF
-0 setgray
-5 249 M
-(    pos = mc.player.getTilePos\(\)) s
-5 235 M
-(    ) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-36.2 235 M
-(print) s
-/F-gs-font 13 13 SF
-0 setgray
-75.2 235 M
-(\(pos\)) s
-5 207 M
-(    ) s
-/Courier-Oblique 13 13 SUF
-0.698039 0.133333 0.133333 setrgbcolor
-36.2 207 M
-(# Check whether your player is standing on the teleport) s
-/F-gs-font 13 13 SF
-0 setgray
-5 193 M
-(    ) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-36.2 193 M
-(if) s
-/F-gs-font 13 13 SF
-0 setgray
-51.8 193 M
-( pos.x == teleporter_x ) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-231.2 193 M
-(and) s
-/F-gs-font 13 13 SF
-0 setgray
-254.6 193 M
-( pos.z == teleporter_z:) s
-5 179 M
-(        mc.postToChat\() s
-/Courier-Bold 13 13 SUF
-0.737255 0.560784 0.560784 setrgbcolor
-176.6 179 M
-("teleport!") s
-/F-gs-font 13 13 SF
-0 setgray
-262.4 179 M
-(\)) s
-5 165 M
-(        pos.x = destination_x) s
-5 151 M
-(        pos.z = destination_z) s
-5 137 M
-(        mc.player.setTilePos\(pos\)) s
-_R
-_R
-S
-%%Page: (1-2) 3
-%%BeginPageSetup
-_S
-90 rotate
-24 -571 translate
-%Page: (1) 5
-%BeginPageSetup
-_S
-% N-up sub-page 1/2
-0 0 translate
-0.688917 dup scale
-90 rotate
-0 -547 translate
-/pagenum 1 def
-/fname (e04_teleport3.py) def
-/fdir (.) def
-/ftail (e04_teleport3.py) def
-% User defined strings:
-/fmodstr (Wed May 29 00:05:27 2019) def
-/pagenumstr (1) def
-/user_header_p true def
-/user_header_left_str () def
-/user_header_center_str () def
-/user_header_right_str (e04_teleport3.py) def
-/user_footer_p false def
-%%EndPageSetup
-do_header
-/Courier-Bold 13 13 SUF
-0.737255 0.560784 0.560784 setrgbcolor
-5 501 M
-("""Teleport player into the air""") s
-/F-gs-font 13 13 SF
-0 setgray
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-5 473 M
 (from) s
 /F-gs-font 13 13 SF
 0 setgray
-36.2 473 M
+36.2 459 M
 ( mcpi.minecraft ) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-161 473 M
+161 459 M
 (import) s
 /F-gs-font 13 13 SF
 0 setgray
-207.8 473 M
+207.8 459 M
 ( *) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-5 459 M
-(import) s
-/F-gs-font 13 13 SF
-0 setgray
-51.8 459 M
-( time) s
 5 431 M
 (mc = Minecraft.create\(\)) s
 /Courier-Oblique 13 13 SUF
@@ -921,17 +773,25 @@ do_header
 5 361 M
 (teleporter_z = 955) s
 5 333 M
-(height = 30) s
+(destination_x = 735) s
+5 319 M
+(destination_z = 956) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-5 305 M
+5 291 M
 (while) s
 /F-gs-font 13 13 SF
 0 setgray
-44 305 M
+44 291 M
 ( True:) s
-5 291 M
-(    time.sleep\(0.2\)) s
+5 277 M
+(    ) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+36.2 277 M
+(# Get player position) s
+/F-gs-font 13 13 SF
+0 setgray
 5 263 M
 (    pos = mc.player.getTilePos\(\)) s
 5 249 M
@@ -981,22 +841,140 @@ do_header
 262.4 193 M
 (\)) s
 5 179 M
+(        pos.x = destination_x) s
+5 165 M
+(        pos.z = destination_z) s
+5 151 M
+(        mc.player.setTilePos\(pos\)) s
+_R
+_R
+S
+%%Page: (1-2) 3
+%%BeginPageSetup
+_S
+90 rotate
+24 -571 translate
+%Page: (1) 5
+%BeginPageSetup
+_S
+% N-up sub-page 1/2
+0 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (e04_teleport3.py) def
+/fdir (.) def
+/ftail (e04_teleport3.py) def
+% User defined strings:
+/fmodstr (Wed May 29 16:33:31 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (e04_teleport3.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Teleport player into the air) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 473 M
+(from) s
+/F-gs-font 13 13 SF
+0 setgray
+36.2 473 M
+( mcpi.minecraft ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+161 473 M
+(import) s
+/F-gs-font 13 13 SF
+0 setgray
+207.8 473 M
+( *) s
+5 445 M
+(mc = Minecraft.create\(\)) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 417 M
+(# CHANGE THESE NUMBERS TO THE CO-ORDS OF YOUR TELEPORTERS) s
+/F-gs-font 13 13 SF
+0 setgray
+5 389 M
+(teleporter_x = 9) s
+5 375 M
+(teleporter_z = 12) s
+5 347 M
+(height = 30) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 319 M
+(while) s
+/F-gs-font 13 13 SF
+0 setgray
+44 319 M
+( True:) s
+5 305 M
+(    pos = mc.player.getTilePos\(\)) s
+5 277 M
+(    ) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+36.2 277 M
+(# Check whether your player is standing on the teleport) s
+/F-gs-font 13 13 SF
+0 setgray
+5 263 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 263 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+51.8 263 M
+( pos.x == teleporter_x ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+231.2 263 M
+(and) s
+/F-gs-font 13 13 SF
+0 setgray
+254.6 263 M
+( pos.z == teleporter_z:) s
+5 249 M
+(        mc.postToChat\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+176.6 249 M
+("teleport!") s
+/F-gs-font 13 13 SF
+0 setgray
+262.4 249 M
+(\)) s
+5 235 M
 (        pos.y += height  ) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-200 179 M
+200 235 M
 (# up in the air!) s
 /F-gs-font 13 13 SF
 0 setgray
-5 165 M
+5 221 M
 (        pos.x += 1  ) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-161 165 M
+161 221 M
 (# move off the teleporter tile) s
 /F-gs-font 13 13 SF
 0 setgray
-5 151 M
+5 207 M
 (        mc.player.setTilePos\(pos\)) s
 _R
 %Page: (1) 6
@@ -1012,7 +990,7 @@ _S
 /fdir (.) def
 /ftail (e05_teleport4.py) def
 % User defined strings:
-/fmodstr (Wed May 29 00:05:36 2019) def
+/fmodstr (Wed May 29 16:36:36 2019) def
 /pagenumstr (1) def
 /user_header_p true def
 /user_header_left_str () def
@@ -1021,10 +999,10 @@ _S
 /user_footer_p false def
 %%EndPageSetup
 do_header
-/Courier-Bold 13 13 SUF
-0.737255 0.560784 0.560784 setrgbcolor
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
 5 501 M
-("""Do lots of teleports so it looks like a jump""") s
+(# Do lots of teleports so it looks like a jump) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Bold 13 13 SUF
@@ -1060,9 +1038,9 @@ do_header
 /F-gs-font 13 13 SF
 0 setgray
 5 375 M
-(teleporter_x = 734) s
+(teleporter_x = 9) s
 5 361 M
-(teleporter_z = 956) s
+(teleporter_z = 12) s
 5 333 M
 (height = 20) s
 /Courier-Bold 13 13 SUF
@@ -1074,97 +1052,115 @@ do_header
 44 305 M
 ( True:) s
 5 291 M
-(    time.sleep\(0.2\)) s
-5 263 M
 (    pos = mc.player.getTilePos\(\)) s
-5 235 M
+5 263 M
 (    ) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-36.2 235 M
+36.2 263 M
 (if) s
 /F-gs-font 13 13 SF
 0 setgray
-51.8 235 M
+51.8 263 M
 ( pos.x == teleporter_x ) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-231.2 235 M
+231.2 263 M
 (and) s
 /F-gs-font 13 13 SF
 0 setgray
-254.6 235 M
+254.6 263 M
 ( pos.z == teleporter_z:) s
-5 221 M
+5 249 M
 (        mc.postToChat\() s
 /Courier-Bold 13 13 SUF
 0.737255 0.560784 0.560784 setrgbcolor
-176.6 221 M
+176.6 249 M
 ("teleport!") s
 /F-gs-font 13 13 SF
 0 setgray
-262.4 221 M
+262.4 249 M
 (\)) s
-5 207 M
-(        pos.x += 1  ) s
+5 235 M
+(        ) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-161 207 M
-(# move off the teleporter tile) s
+67.4 235 M
+(# move off the teleporter tile so we dont land on it again) s
 /F-gs-font 13 13 SF
 0 setgray
-5 193 M
+5 221 M
+(        pos.x += 1) s
+5 207 M
 (        ) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-67.4 193 M
+67.4 207 M
 (for) s
 /F-gs-font 13 13 SF
 0 setgray
-90.8 193 M
+90.8 207 M
 ( i ) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-114.2 193 M
+114.2 207 M
 (in) s
 /F-gs-font 13 13 SF
 0 setgray
-129.8 193 M
+129.8 207 M
 ( range\(0, height\):) s
-5 179 M
+5 193 M
 (            pos.y += 1  ) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-192.2 179 M
+192.2 193 M
 (# move up a bit) s
 /F-gs-font 13 13 SF
 0 setgray
+5 179 M
+(            time.sleep\(0.1\) ) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+223.4 179 M
+(# short delay of 0.2 seconds) s
+/F-gs-font 13 13 SF
+0 setgray
 5 165 M
-(            time.sleep\(0.05\)) s
-5 151 M
 (            mc.player.setTilePos\(pos\)) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 123 M
+5 137 M
 (# TODO) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
+5 123 M
+(# Change the height of the jump.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
 5 109 M
-(# change the height of the jump) s
+(# Make the jump faster.) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 95 M
-(# move the player in X and Z directions as well) s
+(# Move the player in X and Z directions as well during the jump.) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 81 M
-(# during the jump) s
+(# Instead of one tile, use < and > to check if player is within a larger) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 67 M
+(#   area.) s
 /F-gs-font 13 13 SF
 0 setgray
 _R
@@ -1188,7 +1184,7 @@ _S
 /fdir (.) def
 /ftail (e06_create_block.py) def
 % User defined strings:
-/fmodstr (Wed May 29 00:43:56 2019) def
+/fmodstr (Wed May 29 16:37:04 2019) def
 /pagenumstr (1) def
 /user_header_p true def
 /user_header_left_str () def
@@ -1276,66 +1272,72 @@ do_header
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 277 M
-(# AIR, BED, BEDROCK, BEDROCK_INVISIBLE, BOOKSHELF, BRICK_BLOCK, CACTUS,) s
+(#) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 263 M
-(# CHEST,CLAY, COAL_ORE, COBBLESTONE, COBWEB, CRAFTING_TABLE, DIAMOND_BLOCK,) s
+(# AIR, BED, BEDROCK, BEDROCK_INVISIBLE, BOOKSHELF, BRICK_BLOCK, CACTUS,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 249 M
-(# DIAMOND_ORE, DIRT, DOOR_IRON, DOOR_WOOD, FARMLAND, FENCE, FENCE_GATE, FIRE,) s
+(# CHEST,CLAY, COAL_ORE, COBBLESTONE, COBWEB, CRAFTING_TABLE, DIAMOND_BLOCK,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 235 M
-(# FLOWER_CYAN, FLOWER_YELLOW, FURNACE_ACTIVE, FURNACE_INACTIVE, GLASS,) s
+(# DIAMOND_ORE, DIRT, DOOR_IRON, DOOR_WOOD, FARMLAND, FENCE, FENCE_GATE, FIRE,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 221 M
-(# GLASS_PANE, GLOWSTONE_BLOCK, GOLD_BLOCK, GOLD_ORE, GRASS, GRASS_TALL,) s
+(# FLOWER_CYAN, FLOWER_YELLOW, FURNACE_ACTIVE, FURNACE_INACTIVE, GLASS,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 207 M
-(# GRAVEL, ICE, IRON_BLOCK, IRON_ORE, LADDER, LAPIS_LAZULI_BLOCK,) s
+(# GLASS_PANE, GLOWSTONE_BLOCK, GOLD_BLOCK, GOLD_ORE, GRASS, GRASS_TALL,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 193 M
-(# LAPIS_LAZULI_ORE, LAVA, LAVA_FLOWING, LAVA_STATIONARY, LEAVES, MELON,) s
+(# GRAVEL, ICE, IRON_BLOCK, IRON_ORE, LADDER, LAPIS_LAZULI_BLOCK,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 179 M
-(# MOSS_STONE, MUSHROOM_BROWN, MUSHROOM_RED, OBSIDIAN,) s
+(# LAPIS_LAZULI_ORE, LAVA, LAVA_FLOWING, LAVA_STATIONARY, LEAVES, MELON,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 165 M
-(# REDSTONE_ORE, SAND, SANDSTONE, SAPLING, SNOW, SNOW_BLOCK, STAIRS_COBBLESTONE,) s
+(# MOSS_STONE, MUSHROOM_BROWN, MUSHROOM_RED, OBSIDIAN,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 151 M
-(# STAIRS_WOOD, STONE, STONE_BRICK, STONE_SLAB, STONE_SLAB_DOUBLE, SUGAR_CANE,) s
+(# REDSTONE_ORE, SAND, SANDSTONE, SAPLING, SNOW, SNOW_BLOCK, STAIRS_COBBLESTONE,) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
 5 137 M
+(# STAIRS_WOOD, STONE, STONE_BRICK, STONE_SLAB, STONE_SLAB_DOUBLE, SUGAR_CANE,) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 123 M
 (# TNT, TORCH, WATER, WATER_FLOWING, WATER_STATIONARY, WOOD, WOOD_PLANKS, WOOL) s
 /F-gs-font 13 13 SF
 0 setgray
@@ -1353,7 +1355,7 @@ _S
 /fdir (.) def
 /ftail (e07_create_block_loop.py) def
 % User defined strings:
-/fmodstr (Wed May 29 00:01:38 2019) def
+/fmodstr (Wed May 29 16:38:35 2019) def
 /pagenumstr (1) def
 /user_header_p true def
 /user_header_left_str () def
@@ -1400,53 +1402,43 @@ do_header
 0 setgray
 176.6 459 M
 ( *) s
-/Courier-Bold 13 13 SUF
-0.627451 0.12549 0.941176 setrgbcolor
-5 445 M
-(import) s
-/F-gs-font 13 13 SF
-0 setgray
-51.8 445 M
-( time) s
-5 417 M
+5 431 M
 (mc = Minecraft.create\(\)) s
 /Courier-Bold 13 13 SUF
 0.627451 0.12549 0.941176 setrgbcolor
-5 389 M
+5 403 M
 (while) s
 /F-gs-font 13 13 SF
 0 setgray
-44 389 M
+44 403 M
 ( True:) s
-5 375 M
-(    time.sleep\(0.2\)) s
-5 361 M
+5 389 M
 (    pos = mc.player.getTilePos\(\)) s
-5 347 M
+5 375 M
 (    x = pos.x) s
-5 333 M
+5 361 M
 (    y = pos.y) s
-5 319 M
+5 347 M
 (    z = pos.z) s
-5 305 M
-(    blocktype = ICE) s
-5 291 M
+5 333 M
+(    blocktype = WOOL) s
+5 319 M
 (    mc.setBlock\(x, y, z, blocktype\)) s
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 263 M
+5 291 M
 (# TODO) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 249 M
+5 277 M
 (# Make the block appear one meter BELOW the player's position) s
 /F-gs-font 13 13 SF
 0 setgray
 /Courier-Oblique 13 13 SUF
 0.698039 0.133333 0.133333 setrgbcolor
-5 235 M
+5 263 M
 (# Change the block to something else.  Ice?) s
 /F-gs-font 13 13 SF
 0 setgray
@@ -1847,7 +1839,7 @@ _S
 /fdir (.) def
 /ftail (e11_street.py) def
 % User defined strings:
-/fmodstr (Wed May 29 03:05:29 2019) def
+/fmodstr (Wed May 29 15:53:57 2019) def
 /pagenumstr (1) def
 /user_header_p true def
 /user_header_left_str () def
@@ -2035,7 +2027,328 @@ do_header
 _R
 _R
 S
+%%Page: (1-2) 7
+%%BeginPageSetup
+_S
+90 rotate
+24 -571 translate
+%Page: (1) 13
+%BeginPageSetup
+_S
+% N-up sub-page 1/2
+0 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (e12_chat.py) def
+/fdir (.) def
+/ftail (e12_chat.py) def
+% User defined strings:
+/fmodstr (Wed May 29 16:27:20 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (e12_chat.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# Your program can read chat messages posted by players.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 487 M
+(# This program builds a block next to the player who) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 473 M
+(# says "build".  This is the first example that will) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 459 M
+(# work for more than one player.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 431 M
+(from) s
+/F-gs-font 13 13 SF
+0 setgray
+36.2 431 M
+( mcpi.minecraft ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+161 431 M
+(import) s
+/F-gs-font 13 13 SF
+0 setgray
+207.8 431 M
+( *) s
+5 403 M
+(mc = Minecraft.create\(\)) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 375 M
+(while) s
+/F-gs-font 13 13 SF
+0 setgray
+44 375 M
+( True:) s
+5 361 M
+(    events = mc.events.pollChatPosts\(\)) s
+5 347 M
+(    ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+36.2 347 M
+(for) s
+/F-gs-font 13 13 SF
+0 setgray
+59.6 347 M
+( event ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+114.2 347 M
+(in) s
+/F-gs-font 13 13 SF
+0 setgray
+129.8 347 M
+( events:) s
+5 333 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 333 M
+(print) s
+/F-gs-font 13 13 SF
+0 setgray
+106.4 333 M
+( \(event\)) s
+5 319 M
+(        ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+67.4 319 M
+(if) s
+/F-gs-font 13 13 SF
+0 setgray
+83 319 M
+( event.message == ) s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+223.4 319 M
+("build") s
+/F-gs-font 13 13 SF
+0 setgray
+278 319 M
+(:) s
+5 305 M
+(            id = event.entityId) s
+5 291 M
+(            pos = mc.entity.getTilePos\(id\)) s
+5 277 M
+(            x = pos.x) s
+5 263 M
+(            y = pos.y) s
+5 249 M
+(            z = pos.z) s
+5 235 M
+(            mc.setBlock\(x, y, z, 1\)) s
+5 221 M
+(            mc.postToChat\() s
+/Courier-Bold 13 13 SUF
+0.737255 0.560784 0.560784 setrgbcolor
+207.8 221 M
+("done building!") s
+/F-gs-font 13 13 SF
+0 setgray
+332.6 221 M
+(\)) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 193 M
+(# TODO) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 179 M
+(# build a house around the player if the player says "house") s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 165 M
+(# build a lava trap if the player says "trap") s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 151 M
+(# use mc.getPlayerEntityId\("fred"\) to get the id of a certain) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 137 M
+(#   player named Fred \(or whatever your friend's player name is\)) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+%Page: (1) 14
+%BeginPageSetup
+_S
+% N-up sub-page 2/2
+402 0 translate
+0.688917 dup scale
+90 rotate
+0 -547 translate
+/pagenum 1 def
+/fname (e13_turtle.py) def
+/fdir (.) def
+/ftail (e13_turtle.py) def
+% User defined strings:
+/fmodstr (Wed May 29 16:06:32 2019) def
+/pagenumstr (1) def
+/user_header_p true def
+/user_header_left_str () def
+/user_header_center_str () def
+/user_header_right_str (e13_turtle.py) def
+/user_footer_p false def
+%%EndPageSetup
+do_header
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 501 M
+(# THIS REQUIRES THE MINCRAFTSTUFF PACKAGE TO WORK) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 487 M
+(# You can install it in Mu by clicking in the bottom right gadget) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 473 M
+(#   and adding mincraftstuff to list of third party packages) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 445 M
+(# You may have used a turtle for drawing at school.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 431 M
+(# This is the same but in MInecraft.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 403 M
+(from) s
+/F-gs-font 13 13 SF
+0 setgray
+36.2 403 M
+( mcpi.minecraft ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+161 403 M
+(import) s
+/F-gs-font 13 13 SF
+0 setgray
+207.8 403 M
+( *) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 389 M
+(from) s
+/F-gs-font 13 13 SF
+0 setgray
+36.2 389 M
+( mcpi.block ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+129.8 389 M
+(import) s
+/F-gs-font 13 13 SF
+0 setgray
+176.6 389 M
+( *) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+5 361 M
+(from) s
+/F-gs-font 13 13 SF
+0 setgray
+36.2 361 M
+( minecraftstuff ) s
+/Courier-Bold 13 13 SUF
+0.627451 0.12549 0.941176 setrgbcolor
+161 361 M
+(import) s
+/F-gs-font 13 13 SF
+0 setgray
+207.8 361 M
+( MinecraftTurtle) s
+5 333 M
+(mc = Minecraft.create\(\)) s
+5 319 M
+(pos = mc.player.getTilePos\(\)) s
+5 305 M
+(pos.y += 1) s
+5 277 M
+(turtle = MinecraftTurtle\(mc, pos\)) s
+5 249 M
+(turtle.forward\(5\)) s
+5 235 M
+(turtle.right\(90\)) s
+5 221 M
+(turtle.forward\(5\)) s
+5 207 M
+(turtle.right\(90\)) s
+5 193 M
+(turtle.forward\(5\)) s
+5 179 M
+(turtle.right\(90\)) s
+5 165 M
+(turtle.forward\(5\)) s
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 137 M
+(# TODO) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 123 M
+(# Draw a triangle, hexagon, etc.) s
+/F-gs-font 13 13 SF
+0 setgray
+/Courier-Oblique 13 13 SUF
+0.698039 0.133333 0.133333 setrgbcolor
+5 109 M
+(# What do turtle.up\(90\) and turtle.down\(90\) do?) s
+/F-gs-font 13 13 SF
+0 setgray
+_R
+_R
+S
 %%Trailer
-%%Pages: 12
+%%Pages: 14
 %%DocumentNeededResources: font Courier-Oblique Courier-Bold Courier 
 %%EOF

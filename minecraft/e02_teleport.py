@@ -13,7 +13,7 @@ mc.player.setTilePos(x, y, z)
 
 # TODO
 # Find the coordinates of a location in your world, either by pressing F3
-# in the game, or running the where_am_i.py program
+# in the game, or running the e01_coordinates.py program
 # enter them in this program and run it to teleport there
 #
 # Add
