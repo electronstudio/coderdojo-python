@@ -2,8 +2,8 @@
 IMPORTANT: switch Mu mode to "Pygame Zero" or
 nothing will appear!
 """
-WIDTH = 500  # what are these units? what if we change them?
-HEIGHT = 500  # what if we delete this line?
+WIDTH = 500  # What are these units? What if we change them?
+HEIGHT = 500  # What if we delete this line?
 
 
 def draw():
