@@ -1,5 +1,7 @@
+"""
 # Before you run this, build two tiles in the game to be
 # your teleporters and write down the co-ordinates of them
+"""
 
 from mcpi.minecraft import *
 

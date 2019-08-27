@@ -1,5 +1,7 @@
+""" If we import mcpi.block we can use names instead of numbers for blocks
+"""
+
 from mcpi.minecraft import *
-# If we import this we can use names instead of numbers for blocks
 from mcpi.block import *
 
 mc = Minecraft.create()
@@ -10,6 +12,7 @@ z = pos.z
 blocktype = 1
 mc.setBlock(x, y, z, blocktype)
 
+"""
 #TODO
 # Make the block appear a short distance from the player
 #
@@ -26,3 +29,4 @@ mc.setBlock(x, y, z, blocktype)
 # REDSTONE_ORE, SAND, SANDSTONE, SAPLING, SNOW, SNOW_BLOCK, STAIRS_COBBLESTONE,
 # STAIRS_WOOD, STONE, STONE_BRICK, STONE_SLAB, STONE_SLAB_DOUBLE, SUGAR_CANE,
 # TNT, TORCH, WATER, WATER_FLOWING, WATER_STATIONARY, WOOD, WOOD_PLANKS, WOOL
+"""
