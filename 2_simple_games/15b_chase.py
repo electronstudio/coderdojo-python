@@ -1,5 +1,5 @@
 """
-    Most of this code is copied from programs 11 and 13
+    Program 15 but the box chases the alien and game exits if it catches him
 """
 WIDTH = 500
 HEIGHT = 500
@@ -18,15 +18,15 @@ def update():
         alien.x = alien.x + 2
     elif keyboard.left:
         alien.x = alien.x - 2
-    box.x = box.x + 2
-    if box.x > WIDTH:
-        box.x = 0
+    if box.x < alien.x:
+        box.x = box.x + 1
+    if box.x > alien.x:
+        box.x = box.x - 1
     if alien.colliderect(box):
-        print("hit")
+        exit()
 
 
 """ TODO
     joystick input (again), vertical movement (again)
-    make the box chase the alien
-    print number of times hit (the score)
+    instead of a box use another Actor that you have drawn
 """

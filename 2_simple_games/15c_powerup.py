@@ -1,0 +1,35 @@
+"""
+    Program 15 but the box chases the alien and game exits if it catches him
+"""
+WIDTH = 500
+HEIGHT = 500
+import random
+
+alien = Actor("alien")
+alien.pos = (400, 50)
+box = Rect((20, 20), (100, 100))
+score = 0
+
+def draw():
+    screen.clear()
+    screen.draw.filled_rect(box, "green")
+    alien.draw()
+
+def update():
+    global score
+    if keyboard.right:
+        alien.x = alien.x + 2
+    elif keyboard.left:
+        alien.x = alien.x - 2
+    if alien.colliderect(box):
+        box.x = random.randint(0, WIDTH)
+        box.y = random.randint(0, HEIGHT)
+        score = score + 1
+        print("Score:", score)
+
+
+""" TODO
+    joystick input (again), vertical movement (again)
+    instead of a box use another Actor that you have drawn
+    combine with enemy chase
+"""

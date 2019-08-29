@@ -3,6 +3,7 @@
     the update() function
 """
 WIDTH = 500
+HEIGHT = 500
 
 box = Rect((20, 20), (50, 50))
 

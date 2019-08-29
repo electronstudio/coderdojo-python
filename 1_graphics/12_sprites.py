@@ -5,6 +5,7 @@
     for other images you must add them yourself
 """
 WIDTH = 500
+HEIGHT = 500
 
 alien = Actor('alien')
 alien.x = 0

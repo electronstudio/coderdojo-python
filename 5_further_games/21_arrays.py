@@ -5,6 +5,7 @@ Add a new alien when the mouse is clicked
 """
 
 WIDTH = 500
+HEIGHT = 500
 
 aliens = []
 for i in range(0,10):
