@@ -1,5 +1,5 @@
 """
-    Program 15 but the box chases the alien and game exits if it catches him
+    Program 15 but the box moves when the alien touches it
 """
 WIDTH = 500
 HEIGHT = 500
