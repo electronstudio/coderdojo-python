@@ -2,9 +2,9 @@ from mcpi.minecraft import *
 from mcpi.block import *
 
 # This MUST be the name you gave to your clear space program!
-from e09_clear_space import *
+from clear_space import *
 # This MUST be the name you gave to your house program!
-from e10_basic_house import *
+from house import *
 
 mc = Minecraft.create()
 pos = mc.player.getTilePos()
@@ -23,7 +23,7 @@ for i in range(1, 100, 20):
     print(x+i, y, z)
     make_house(mc, x+i, y, z, width, height, length)
 
-# TODO
+""" TODO
 # How many houses are there?  Make the street longer with more houses.
 # Make the houses get taller as the street goes on.
 # Add some towers to the street.
@@ -32,3 +32,4 @@ for i in range(1, 100, 20):
 #   kind of house to your street.
 # Make some roads or fences.
 # Make your houses out of TNT.  Use flint tool on them.
+"""

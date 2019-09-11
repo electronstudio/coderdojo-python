@@ -1,9 +1,10 @@
-# THIS REQUIRES THE MINCRAFTSTUFF PACKAGE TO WORK
+""" THIS REQUIRES THE MINECRAFTSTUFF PACKAGE TO WORK
 # You can install it in Mu by clicking in the bottom right gadget
-#   and adding mincraftstuff to list of third party packages
+#   and adding minecraftstuff to list of third party packages
 
 # You may have used a turtle for drawing at school.
-# This is the same but in MInecraft.
+# This is the same but in Minecraft.
+"""
 
 from mcpi.minecraft import *
 from mcpi.block import *
@@ -24,6 +25,7 @@ turtle.forward(5)
 turtle.right(90)
 turtle.forward(5)
 
-# TODO
+"""TODO
 # Draw a triangle, hexagon, etc.
 # What do turtle.up(90) and turtle.down(90) do?
+"""
